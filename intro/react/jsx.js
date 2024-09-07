@@ -36,4 +36,4 @@ function App() {
 const Name = () => <h5>Coding Ninjas</h5>
 
 // ReactDOM.createRoot(rootDiv).render(App());
-ReactDOM.createRoot(rootDiv).render(<><App/> <Name/></>);        // check in component tab (react developer tools) in dev tools
+ReactDOM.createRoot(rootDiv).render(<App/>);        // check in component tab (react developer tools) in dev tools
