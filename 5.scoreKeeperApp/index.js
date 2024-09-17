@@ -70,10 +70,7 @@ const handleSubmitForm = (event) => {
 
 
     // re-render app component
-    // root.render(<App/>);
-
-
-
+    root.render(<App/>);
 }
 
 // Button Component
