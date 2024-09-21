@@ -12,7 +12,8 @@ export default class MovieCard extends Component {
 			price: 199,
 			poster: "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
 			rating: 8.5,
-			star: 2
+			star: 2,
+			isFavourite: false,
 		}
 		// this.addStar = this.addStar.bind(this);
 	}
@@ -26,29 +27,77 @@ export default class MovieCard extends Component {
 	
 	// using arrow function instead of bind method
 	addStar = () => {
-		console.log("Before this.state:", this.state);
-		console.log("Added the star");
+		// console.log("Before this.state:", this.state);
+		// console.log("Added the star");
 		// this.state.star += 0.5;
 		// const {star} = this.state;
 		// 1st way of updating state using setState()
-		this.setState({
-			star: this.state.star+0.5,
-		})
+		// this.setState({
+		// 	star: this.state.star+0.5,
+		// })
+
+		// this.setState({
+		// 	star: this.state.star+1,
+		// }, () => {
+		// 	console.log("Inside callback",this.state.star);
+		// })
+
+		// this.setState({
+		// 	star: this.state.star+2,
+		// })
+		
+		// this.setState({
+		// 	title: "Intersteller",
+		// })
+		
+		// this.setState({
+		// 	title: "John Wick",
+		// })
 
 		// 2nd way of update satate using setState()
-		// this.setState((prevState) => {
-		// 	console.log("prevState", prevState)
-		// 	return {
-		// 		star: prevState.star + 0.5
-		// 	}
+		this.setState((prevState) => {
+			console.log("prevState", prevState.star)
+			return {
+				star: prevState.star + 0.5
+			}
+		})
+		this.setState((prevState) => {
+			console.log("prevState",  prevState.star)
+			return {
+				star: prevState.star + 0.5
+			}
+		})
+		this.setState((prevState) => {
+			console.log("prevState",  prevState.star)
+			return {
+				star: prevState.star + 0.5
+			}
+		})
+		// this.setState({
+		// 	star: this.state.star+5,
 		// })
-		console.log("After this.state:", this.state);
+		this.setState((prevState) => {
+			console.log("prevState",  prevState.star)
+			return {
+				star: prevState.star + 1
+			}
+		})
+
+		console.log("After state update star:", this.state.star);
 		// console.log("this", this)
 	}
 
+	handleFavourite = () => {
+		this.setState({
+			isFavourite: !this.state.isFavourite
+		}, () => console.log("isFav", this.state.isFavourite))
+	}
+
   render() {
-		// Destructure the state
-		const {price, plot, poster, star, rating} = this.state;
+	console.log("Rendered!!")
+  // Destructure the state
+  const {price, plot, poster, star, rating, isFavourite} = this.state;
+  console.log("isFavourite", isFavourite)
     return (
       <div className="main">
         <div className="movie-card">
@@ -85,7 +134,12 @@ export default class MovieCard extends Component {
 								&nbsp;
 								<span className="star-count">{star}</span>
 							</div>
-              <button className="favourite-btn">Favourite</button>
+              {/* Conditional rendering for showing fav/unfav button */}
+              
+              {/* {(isFavourite) ? <button className="unfavourite-btn" onClick={this.handleFavourite}>Unfavourite</button> : <button className="favourite-btn" onClick={this.handleFavourite}>Favourite</button>
+              } */}
+              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={this.handleFavourite}>{}{isFavourite ? "Unfavourite": "Favourite"}</button>
+              
               <button className="cart-btn">Add to cart</button>
             </div>
           </div>
