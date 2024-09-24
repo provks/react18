@@ -17,51 +17,13 @@ export default class MovieCard extends Component {
 		// }
 		// this.addStar = this.addStar.bind(this);
 	}
-
-	// to increase the stars
-	// addStar() {
-	// 	console.log("Added the star");
-	// 	console.log("this.state:", this.state);	// error 
-	// 	// console.log("this", this)
-	// }
 	
-	// using arrow function instead of bind method
-	addStar = () => {
-		// console.log("Before this.state:", this.state);
-		// console.log("Added the star");
-		// this.state.star += 0.5;
-		// const {star} = this.state;
-		// 1st way of updating state using setState()
-		this.setState({
-			star: this.state.star+0.5,
-		})
-
-		
-
-		// 2nd way of update satate using setState()
-		// this.setState((prevState) => {
-		// 	console.log("prevState", prevState.star)
-		// 	return {
-		// 		star: prevState.star + 0.5
-		// 	}
-		// })
-		
-
-		console.log("After state update star:", this.state.star);
-		// console.log("this", this)
-	}
-
-	handleFavourite = () => {
-		this.setState({
-			isFavourite: !this.state.isFavourite
-		}, () => console.log("isFav", this.state.isFavourite))
-	}
+	
 
   render() {
-	console.log("Rendered!!", this.props)
   // Destructure the state
   const {price, plot, poster, star, rating, isFavourite} = this.props.movie;
-  console.log("isFavourite", isFavourite)
+	const {handleFavourite, handleIncreaseStars} = this.props;
     return (
       <div className="main">
         <div className="movie-card">
@@ -93,7 +55,7 @@ export default class MovieCard extends Component {
 									src="https://cdn-icons-png.flaticon.com/128/992/992651.png" 
 									alt="Increasing" 
 									// onClick={this.addStar.bind(this)}
-									onClick={this.addStar}
+									onClick={() => this.props.handleIncreaseStars(this.props.movie)}
 								/>
 								&nbsp;
 								<span className="star-count">{star}</span>
@@ -102,7 +64,7 @@ export default class MovieCard extends Component {
               
               {/* {(isFavourite) ? <button className="unfavourite-btn" onClick={this.handleFavourite}>Unfavourite</button> : <button className="favourite-btn" onClick={this.handleFavourite}>Favourite</button>
               } */}
-              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={this.handleFavourite}>{}{isFavourite ? "Unfavourite": "Favourite"}</button>
+              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={() => handleFavourite(this.props.movie)}>{}{isFavourite ? "Unfavourite": "Favourite"}</button>
               
               <button className="cart-btn">Add to cart</button>
             </div>
