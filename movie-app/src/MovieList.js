@@ -1,5 +1,6 @@
 import { Component } from "react";
 import MovieCard from "./Moviecard";
+import Student from "./Student";
 
 export default class MovieList extends Component {
   constructor() {
@@ -8,6 +9,7 @@ export default class MovieList extends Component {
     this.state = {
       movies: [
         {
+					id: 1,
           title: "The Avengers!!!!",
           plot: "S.H.I.E.L.D. leader Nick Fury is compelled to launch the Avengers programme when Loki poses a threat to planet Earth. But the superheroes must learn to work together if they are to stop him in time.",
           price: 199,
@@ -18,6 +20,7 @@ export default class MovieList extends Component {
           isFavourite: false,
         },
         {
+					id: 2,
           title: "Interstellar",
           plot: "plot of interstellar",
           price: 299,
@@ -28,6 +31,7 @@ export default class MovieList extends Component {
           isFavourite: false,
         },
         {
+					id: 3,
           title: "John Wick",
           plot: "some plot of movie john wick!",
           price: 99,
@@ -73,11 +77,13 @@ export default class MovieList extends Component {
       <>
         {this.state.movies.map((movie) => {
           return <MovieCard 
+						key = {movie.id}
 						movie={movie}
 						handleIncreaseStars = {this.addStar}
 						handleFavourite={this.handleFavourite}
 					/>;
         })}
+				{/* <Student name="coding ninjas"/> */}
       </>
     );
   }

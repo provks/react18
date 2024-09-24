@@ -1,0 +1,16 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: blue;
+    color: whitesmoke;
+    height: 7vh;
+}
+
+.navbar div{
+    margin: 0 10px;
+}
+
+.navbar div h3 {
+    margin: 0;
+}
