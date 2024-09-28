@@ -6,8 +6,8 @@ export default class MovieCard extends Component {
 
   render() {
   // Destructure the state
-  const {price, plot, poster, star, rating, isFavourite} = this.props.movie;
-	const {handleFavourite, handleIncreaseStars} = this.props;
+  const { price, plot, poster, star, rating, isFavourite, hasAddedToCart } = this.props.movie;
+	const { movie, handleFavourite, handleIncreaseStars, handleDecreaseStars, handleCart } = this.props;
     return (
       <div className="main">
         <div className="movie-card">
@@ -30,6 +30,7 @@ export default class MovieCard extends Component {
 								<img 
 									className="star-btn" 
 									src="https://cdn-icons-png.flaticon.com/128/1828/1828906.png" alt="Decreasing"
+                  onClick={() => handleDecreaseStars(movie)}
 									/>
 								&nbsp;
 								<img className="stars" src="https://cdn-icons-png.flaticon.com/128/616/616490.png" alt="Stars" />
@@ -48,9 +49,12 @@ export default class MovieCard extends Component {
               
               {/* {(isFavourite) ? <button className="unfavourite-btn" onClick={this.handleFavourite}>Unfavourite</button> : <button className="favourite-btn" onClick={this.handleFavourite}>Favourite</button>
               } */}
-              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={() => handleFavourite(this.props.movie)}>{}{isFavourite ? "Unfavourite": "Favourite"}</button>
+              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={() => handleFavourite(this.props.movie)}>{isFavourite ? "Unfavourite": "Favourite"}</button>
               
-              <button className="cart-btn">Add to cart</button>
+              <button 
+                className={hasAddedToCart ? "remove-cart-btn": "cart-btn" }
+                onClick={() => handleCart(movie)}
+              >{hasAddedToCart ? "Remove from Cart": "Add to cart"}</button>
             </div>
           </div>
         </div>
