@@ -6,11 +6,10 @@
     justify-content: space-around;
     align-items: center;
     margin: 10px;
-}
-
-.btn {
+  }
+  
+  .btn {
+    background: blue;
     color: white;
-    padding: 10px;
-    border-radius: 10%;
-    background: red;
-}
+    padding: 5px;
+  }

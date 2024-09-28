@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./wrapperTwo.css"
 
 export default class WrapperTwo extends Component {
   render() {
