@@ -18,6 +18,7 @@ export default class MovieList extends Component {
           rating: 8.5,
           star: 2,
           isFavourite: false,
+          addToCart: false
         },
         {
 					id: 2,
@@ -29,6 +30,7 @@ export default class MovieList extends Component {
           rating: 9,
           star: 4,
           isFavourite: false,
+          addToCart: false
         },
         {
 					id: 3,
@@ -40,6 +42,7 @@ export default class MovieList extends Component {
           rating: 7,
           star: 3.5,
           isFavourite: false,
+          addToCart: false
         },
       ],
     };
@@ -51,6 +54,20 @@ export default class MovieList extends Component {
 		const movieIndex = movies.indexOf(movie);
 		if (movies[movieIndex].star < 5) {
 			movies[movieIndex].star += 0.5
+			this.setState({
+				// star: this.state.star+0.5,
+				movies: movies
+			})
+		}
+		
+		console.log("After state update star:", movies[movieIndex].star);
+	}
+	// handle increase star 
+	removeStar = (movie) => {
+		const { movies } = this.state;
+		const movieIndex = movies.indexOf(movie);
+		if (movies[movieIndex].star > 0) {
+			movies[movieIndex].star -= 0.5
 			this.setState({
 				// star: this.state.star+0.5,
 				movies: movies
@@ -72,6 +89,15 @@ export default class MovieList extends Component {
 		}, () => console.log("movies[movieIndex].isFavourite", movies[movieIndex].isFavourite))
 	}
 
+  handleCart = (movie) => {
+    const { movies } = this.state;
+    const movieIndex = movies.indexOf(movie);
+    movies[movieIndex].addToCart = !movies[movieIndex].addToCart;
+		this.setState({
+			addToCart: !this.state.addToCart
+		}, () => console.log("addToCart", this.state.addToCart))
+	}
+
   render() {
     return (
       <>
@@ -80,7 +106,9 @@ export default class MovieList extends Component {
 						key = {movie.id}
 						movie={movie}
 						handleIncreaseStars = {this.addStar}
+            handleDecreaseStars = {this.removeStar}
 						handleFavourite={this.handleFavourite}
+            handleCart={this.handleCart}
 					/>;
         })}
 				{/* <Student name="coding ninjas"/> */}
