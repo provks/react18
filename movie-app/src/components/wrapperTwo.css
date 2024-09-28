@@ -1,0 +1,15 @@
+.wrapper {
+    background-color: orange;
+    color: black;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .btn {
+    background: blue;
+    color: white;
+    padding: 5px;
+  }
