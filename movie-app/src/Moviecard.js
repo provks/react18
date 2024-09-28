@@ -2,12 +2,13 @@ import { Component } from "react";
 import "./moviecard.css";
 
 // export default class MovieCard extends React.Component {
-export default class MovieCard extends Component {	
+// export default class MovieCard extends Component {	
+function MovieCard(props) {
 
-  render() {
+  // render() {
   // Destructure the state
-  const { price, plot, poster, star, rating, isFavourite, hasAddedToCart } = this.props.movie;
-	const { movie, handleFavourite, handleIncreaseStars, handleDecreaseStars, handleCart } = this.props;
+  const { price, plot, poster, star, rating, isFavourite, hasAddedToCart } = props.movie;
+	const { movie, handleFavourite, handleIncreaseStars, handleDecreaseStars, handleCart } = props;
     return (
       <div className="main">
         <div className="movie-card">
@@ -20,7 +21,7 @@ export default class MovieCard extends Component {
           </div>
           {/* Right side of the moviecard */}
           <div className="right">
-            <div className="title">{this.props.movie.title}</div>
+            <div className="title">{props.movie.title}</div>
             <div className="plot">{plot}</div>
             <div className="price">Rs. {price}</div>
             {/* footer */}
@@ -39,17 +40,17 @@ export default class MovieCard extends Component {
 									className="star-btn" 
 									src="https://cdn-icons-png.flaticon.com/128/992/992651.png" 
 									alt="Increasing" 
-									// onClick={this.addStar.bind(this)}
-									onClick={() => this.props.handleIncreaseStars(this.props.movie)}
+									// onClick={addStar.bind(this)}
+									onClick={() => props.handleIncreaseStars(props.movie)}
 								/>
 								&nbsp;
 								<span className="star-count">{star}</span>
 							</div>
               {/* Conditional rendering for showing fav/unfav button */}
               
-              {/* {(isFavourite) ? <button className="unfavourite-btn" onClick={this.handleFavourite}>Unfavourite</button> : <button className="favourite-btn" onClick={this.handleFavourite}>Favourite</button>
+              {/* {(isFavourite) ? <button className="unfavourite-btn" onClick={handleFavourite}>Unfavourite</button> : <button className="favourite-btn" onClick={handleFavourite}>Favourite</button>
               } */}
-              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={() => handleFavourite(this.props.movie)}>{isFavourite ? "Unfavourite": "Favourite"}</button>
+              <button className={isFavourite ? "unfavourite-btn": "favourite-btn" } onClick={() => handleFavourite(props.movie)}>{isFavourite ? "Unfavourite": "Favourite"}</button>
               
               <button 
                 className={hasAddedToCart ? "remove-cart-btn": "cart-btn" }
@@ -61,6 +62,5 @@ export default class MovieCard extends Component {
       </div>
     );
   }
-}
 
-// export default MovieCard;
+export default MovieCard;
