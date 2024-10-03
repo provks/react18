@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import ComponentB from './ComponentB';
 
 export default class ComponentA extends Component {
     constructor() {
@@ -18,15 +19,18 @@ export default class ComponentA extends Component {
 
     componentDidMount() {
         console.log("componentDidMount method,ComponentA");
-        this.setState({
-            name: "Varun"
-        })
+        // this.setState({
+        //     name: "Varun"
+        // })
     }
 
     render() {
         console.log("Render method,ComponentA")
         return (
-            <h1>ComponentA: {this.state.name}</h1>
+            <>
+                <h1>ComponentA: {this.state.name}</h1>
+                <ComponentB/>
+            </>
         )
     }
 }
