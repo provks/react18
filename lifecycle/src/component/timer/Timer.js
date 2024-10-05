@@ -19,8 +19,11 @@ export default class Timer extends Component {
 
     // ------ updating phase start ------
     shouldComponentUpdate(nextProps, nextState) {
-        console.log("shouldComponentUdate")
-        return true;
+        console.log("shouldComponentUdate");
+        console.log("shouldComponentUdate: nextProps", nextProps);
+        console.log("shouldComponentUdate: nextState", nextState);
+        console.log("this.state.time", this.state.time);    // last
+        return nextProps.isTimerOn !== this.props.isTimerOn || nextState.time % 5 === 0;
     }
 
     getSnapshotBeforeUpdate(prevProp, prevState) {
@@ -30,23 +33,37 @@ export default class Timer extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log("componentDidUpdate")
-        console.log("componentDidUpdate: prevProps", prevProps)
-        console.log("componentDidUpdate: prevState", prevState)
-        console.log("componentDidUpdate: snapshot", snapshot)
+        // console.log("componentDidUpdate: prevProps", prevProps)
+        // console.log("componentDidUpdate: prevState", prevState)
+        // console.log("componentDidUpdate: snapshot", snapshot)
         console.log("--------------------------");
-        if (this.state.time == 5) {
-            clearInterval(this.intervalId);
+        if (prevProps.isTimerOn !== this.props.isTimerOn) {
+            if (this.props.isTimerOn) {
+                this.intervalId = setInterval(() => {
+                    this.setState((prevState) => {
+                        return {time: prevState.time +1};
+                    });
+                }, 500)
+            } else {
+                clearInterval(this.intervalId);
+            }
+
         }
+
+        
     }
     // ------ updating phase end ------
 
     componentDidMount() {
         console.log("componentDidMount");
-        this.intervalId = setInterval(() => {
-            this.setState((prevState) => {
-                return {time: prevState.time +1};
-            });
-        }, 5000)
+    }
+    
+    // UnMounting phase
+    componentWillUnmount() {
+        console.log("componentWillUnmount");
+        // if (this.state.time === 5) {
+            clearInterval(this.intervalId);
+        // }
     }
 
     render() {
