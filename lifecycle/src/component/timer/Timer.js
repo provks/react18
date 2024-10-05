@@ -5,17 +5,18 @@ export default class Timer extends Component {
     constructor() {
         super();
         this.state = {
-            count: 0
+            time: 99
         }
         console.log("Constructor")
     }
     
     static getDerivedStateFromProps(props, state) {
+        console.log("--------------------------")
         console.log("getDerivedStateFromProps");
         return null;
     }
 
-    // ------ updating phase ------
+    // ------ updating phase start ------
     shouldComponentUpdate(nextProps, nextState) {
         console.log("shouldComponentUdate")
         return true;
@@ -28,30 +29,26 @@ export default class Timer extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log("componentDidUpdate")
+        console.log("--------------------------")
     }
-    // ------ updating phase ------
+    // ------ updating phase end ------
 
     componentDidMount() {
         console.log("componentDidMount");
-    }
-
-    // increase count handler
-    handleInc = () => {
-        this.setState((prevState) => {
-            return {count: prevState.count+1}
-        })
+        setInterval(() => {
+            this.setState((prevState) => {
+                return {time: prevState.time +1};
+            });
+        }, 1000)
     }
 
     render() {
         console.log("Render")
         return (
-            // <h1>Timer</h1>
             <>
-                <h1>Counter: {this.state.count}</h1>
-                <button onClick={this.handleInc}>Increase</button>
+                <h1>Timer-App</h1>
+                <h2>{new Date(this.state.time * 1000).toISOString().slice(11,19)}</h2>
             </>
-
-
         )
     }
 }
