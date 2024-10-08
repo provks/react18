@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import ComponentB from './ComponentB';
+// import ComponentB from './ComponentB';
 
 export default class ComponentA extends Component {
     constructor() {
@@ -24,7 +24,7 @@ export default class ComponentA extends Component {
         //     name: "Varun"
         // })
         // using fetch for side-effect
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/user/')
         .then(response => response.json())
         .then(json => this.setState({users: json}, () => {console.log(this.state.users)}));
         // .then(json => console.log(json));
@@ -39,7 +39,7 @@ export default class ComponentA extends Component {
                 <ol>
                     {this.state.users.map(user => <li>{user.username}</li>)}
                 </ol>
-                <ComponentB/>
+                {/* <ComponentB/> */}
             </>
         )
     }
