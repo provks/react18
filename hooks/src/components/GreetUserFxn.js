@@ -14,6 +14,17 @@ function GreetUserFxn() {
     [lastname, firstname]  // setup fxn executing when lastname state updating
     )
 
+    useEffect(()=> {
+        const timer = setInterval(() => {
+            const screenWidth = window.innerWidth;
+            console.log(screenWidth);
+        }, 1500);
+
+        return () => {
+            clearInterval(timer);
+        }
+    })
+
     const handleLastName = (e) => {
         setLastname(e.target.value);
     }

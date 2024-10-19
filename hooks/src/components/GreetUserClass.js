@@ -8,7 +8,8 @@ export default class GreetUserClass extends Component {
         this.state = {
             firstName: "Varun",
             lastName: "Sharma"
-        }
+        };
+        this.timer = null;
     }
 
     handleFirstName = (e) => {
@@ -29,11 +30,22 @@ export default class GreetUserClass extends Component {
     componentDidMount() {
         console.log("document.title", document.title);
         document.title = this.state.firstName + " " +  this.state.lastName;
+
+
+        this.timer = setInterval(() => {
+            const screenWidth = window.innerWidth;
+            console.log(screenWidth);
+        }, 1500);
     }
     
     //  Updading Phase
     componentDidUpdate() {
         document.title = this.state.firstName + " " +  this.state.lastName;
+    }
+
+    // Unmounting phase
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
     
     render() {

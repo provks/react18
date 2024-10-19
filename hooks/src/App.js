@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       {/* <GreetUserClass/> */}
-      <GreetUserFxn/>
+      {/* <GreetUserFxn/> */}
     </div>
   );
 }
