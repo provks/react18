@@ -25,6 +25,17 @@ export default class GreetUserClass extends Component {
         })
     }
 
+    // Mounting Phase
+    componentDidMount() {
+        console.log("document.title", document.title);
+        document.title = this.state.firstName + " " +  this.state.lastName;
+    }
+    
+    //  Updading Phase
+    componentDidUpdate() {
+        document.title = this.state.firstName + " " +  this.state.lastName;
+    }
+    
     render() {
         return (
             <>
