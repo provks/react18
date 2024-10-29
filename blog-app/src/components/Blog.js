@@ -1,5 +1,7 @@
 //Blogging App with firebase
 import { useState, useRef, useEffect } from "react";
+import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore"; 
+import { db } from "../firebase.config.js"
 
 export default function Blog(){
 
@@ -9,7 +11,23 @@ export default function Blog(){
     const titleRef = useRef(null);
 
     useEffect(() => {
-        titleRef.current.focus()
+        titleRef.current.focus();
+
+        // ********************************************************
+        // getDocs: Getting all the documents from blogs collection
+        // ********************************************************
+        async function fetchBlogs() {
+            const querySnapshot = await getDocs(collection(db, "blogs"));
+            // querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            // console.log(doc.id, " => ", doc.data());
+            // });
+
+            const fetchedBlogs = querySnapshot.docs.map((doc) => doc.data());
+            // console.log("fetchedBlogs", fetchedBlogs);
+            setBlogs(fetchedBlogs);
+        }
+        fetchBlogs();
     },[]);
 
     async function handleSubmit(e){
@@ -17,7 +35,28 @@ export default function Blog(){
         titleRef.current.focus();
 
         setBlogs([{title: formData.title,content:formData.content}, ...blogs]);
-        
+        // ********************************************************
+        // addDoc: Add a new document with auto assign document id
+        // ********************************************************
+        // try {
+        //     const docRef = await addDoc(collection(db, "blogs"), {
+        //         title: formData.title,
+        //         content: formData.content,
+        //         createdOn: new Date(),
+        //     });
+        //     console.log("Document written with ID: ", docRef.id);
+        // } catch (e) {
+        //     console.error("Error adding document: ", e);
+        // }
+
+        // ********************************************************
+        // setDoc: Add a new document without auto assign document id, we need to pass a unique id manually
+        // ********************************************************
+        await setDoc(doc(db, "blogs", 'blog4'), {
+            title: formData.title,
+            content: formData.content,
+            createdOn: new Date(),
+          });
         setformData({title: "", content: ""});
     }
 
