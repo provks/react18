@@ -1,6 +1,6 @@
 //Blogging App with firebase
 import { useState, useRef, useEffect } from "react";
-import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore"; 
+import { collection, addDoc, getDocs, setDoc, doc, onSnapshot, deleteDoc } from "firebase/firestore"; 
 import { db } from "../firebase.config.js"
 
 export default function Blog(){
@@ -16,18 +16,40 @@ export default function Blog(){
         // ********************************************************
         // getDocs: Getting all the documents from blogs collection
         // ********************************************************
-        async function fetchBlogs() {
-            const querySnapshot = await getDocs(collection(db, "blogs"));
-            // querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data());
-            // });
+        // async function fetchBlogs() {
+        //     const querySnapshot = await getDocs(collection(db, "blogs"));
+        //     // querySnapshot.forEach((doc) => {
+        //     // doc.data() is never undefined for query doc snapshots
+        //     // console.log(doc.id, " => ", doc.data());
+        //     // });
 
-            const fetchedBlogs = querySnapshot.docs.map((doc) => doc.data());
-            // console.log("fetchedBlogs", fetchedBlogs);
+        //     const fetchedBlogs = querySnapshot.docs.map((doc) => doc.data());
+        //     // console.log("fetchedBlogs", fetchedBlogs);
+        //     setBlogs(fetchedBlogs);
+        // }
+        // fetchBlogs();
+        // ********************************************************
+
+        // ********************************************************
+        // onSnapshot: Realtime update: Listen to multiple documents in a collection
+        // ********************************************************
+        // const q = query(collection(db, "cities"), where("state", "==", "CA"));
+        const unsubscribe = onSnapshot(collection(db, "blogs"), (querySnapshot) => {
+        // const blogs = [];
+        // querySnapshot.forEach((doc) => {
+        //     blogs.push(doc.data().name);
+        // });
+        // console.log("Current cities in CA: ", cities.join(", "));
+            const fetchedBlogs = querySnapshot.docs.map((doc) => { 
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            });
+            console.log("fetchedBlogs", fetchedBlogs);
             setBlogs(fetchedBlogs);
-        }
-        fetchBlogs();
+        });
+
     },[]);
 
     async function handleSubmit(e){
@@ -60,8 +82,10 @@ export default function Blog(){
         setformData({title: "", content: ""});
     }
 
-    async function removeBlog(i){
-        setBlogs( blogs.filter((blog,index)=> index !== i));
+    async function removeBlog(blogId){
+        // setBlogs( blogs.filter((blog,index)=> index !== i));
+        const docRef = doc(db, "blogs", blogId);
+        await deleteDoc(docRef);
      }
 
     return(
@@ -99,14 +123,14 @@ export default function Blog(){
         {/* Section where submitted blogs will be displayed */}
         <h2> Blogs </h2>
         {blogs.map((blog,i) => (
-            <div className="blog" key={i}>
+            <div className="blog" key={blog.id}>
                 <h3>{blog.title}</h3>
                 <hr/>
                 <p>{blog.content}</p>
 
                 <div className="blog-btn">
                         <button onClick={() => {
-                             removeBlog(i)
+                             removeBlog(blog.id)
                         }}
                         className="btn remove">
 
