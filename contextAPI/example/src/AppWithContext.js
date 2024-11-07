@@ -73,7 +73,7 @@ function Comp5() {
     {/* <p>Count is: {countValue}</p> */}
     {/* Using context.Consumer */}
     <countContext.Consumer>     
-        {(value) => (<p>Count is: {countValue}</p>)}
+        {(value) => (<p>Count is: {value}</p>)}
     </countContext.Consumer>
     </>
 
