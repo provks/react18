@@ -1,7 +1,7 @@
 import React from 'react'
 import GrandChild from './GrandChild'
 
-function Child(props) {
+function Child() {
   return (
     <div
     style={{
@@ -10,7 +10,7 @@ function Child(props) {
       padding: "10px"
     }}
   >
-    <GrandChild color={props.color} />
+    <GrandChild />
   </div>
   )
 }
