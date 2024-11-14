@@ -3,6 +3,7 @@ import './App.css';
 import ItemsList from './components/ItemsList';
 import Navbar from './components/Navbar';
 import { itemContext } from './itemContext';
+import { totalContext } from './totalContext';
 
 function App() {
   const [total, setTotal] = useState(0);
@@ -10,9 +11,11 @@ function App() {
   return (
     <>
       <h2 className='App'>Cart-App</h2>
-      <itemContext.Provider value={{total, item, setItem, setTotal}}>
-        <Navbar/>
-        <ItemsList/>
+      <itemContext.Provider value={{ item, setItem }}>
+        <totalContext.Provider value={{ total, setTotal }}>
+          <Navbar/>
+          <ItemsList/>
+        </totalContext.Provider>
       </itemContext.Provider>
     </>
   );
