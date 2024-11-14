@@ -5,16 +5,19 @@ import { useContext } from 'react';
 
 function ItemCard(props) {
     // const value = useContext(itemContext);
-    const {total, setTotal} = useContext(itemContext);
+    const {total, setTotal, item, setItem} = useContext(itemContext);
 
     const {name, price} = props;
     const handleAdd = () => {
         setTotal(total + price);
+        // setTotal((prevTotal) => prevTotal+price);
+        setItem(item+1);
     }
     
     const handleRemove = () => {
         if (total !== 0) {
             setTotal(total - price)
+            setItem(item-1);
         }
     }
     return (

@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <h2 className='App'>Cart-App</h2>
-      <itemContext.Provider value={{total, setTotal}}>
+      <itemContext.Provider value={{total, item, setItem, setTotal}}>
         <Navbar/>
         <ItemsList/>
       </itemContext.Provider>
