@@ -1,22 +1,21 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import './App.css';
 import ItemsList from './components/ItemsList';
 import Navbar from './components/Navbar';
-import { itemContext } from './itemContext';
-import { totalContext } from './totalContext';
+import CustomItemContext from './itemContext';
 
 function App() {
-  const [total, setTotal] = useState(0);
-  const [item, setItem] = useState(0);
+  // const [total, setTotal] = useState(0);
+  // const [item, setItem] = useState(0);
   return (
     <>
       <h2 className='App'>Cart-App</h2>
-      <itemContext.Provider value={{ item, setItem }}>
-        <totalContext.Provider value={{ total, setTotal }}>
+      {/* <itemContext.Provider value={{ item, total, setTotal, setItem }}> */}
+      <CustomItemContext>
           <Navbar/>
           <ItemsList/>
-        </totalContext.Provider>
-      </itemContext.Provider>
+      {/* </itemContext.Provider> */}
+      </CustomItemContext>
     </>
   );
 }
