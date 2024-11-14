@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from '../styles/Navbar.module.css'
 import { useContext } from 'react';
-import { itemContext } from '../itemContext';
+import { itemContext, useItemContext } from '../itemContext';
 // import { totalContext } from '../totalContext';
 
 function Navbar() {
-  const value = useContext(itemContext);
+  // const value = useContext(itemContext);
+  const value = useItemContext();
   // const { total } = useContext(totalContext);
   // const {item, total} = useContext(itemContext);
   console.log('value', value);
