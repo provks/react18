@@ -1,8 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function About() {
   return (
-    <h1>About Page</h1>
+    <>
+        <h1>About Page</h1>
+        <h1><Link to="/">Go to Home page</Link></h1>
+        <h1>
+        <Link to="/products">Go to Products page</Link></h1>
+
+    </>
   )
 }
 
