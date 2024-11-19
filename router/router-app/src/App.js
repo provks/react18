@@ -34,8 +34,8 @@ function App() {
 
   return (
     <>
-      {/* Provide router */}
-      <Navbar/>
+      {/* step2: Provide router */}
+      {/* <Navbar/> */}
       <RouterProvider router={router}/>
     </>
   );
