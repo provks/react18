@@ -15,39 +15,40 @@ function App() {
   //     <Route path="products" element={<Product />} />
   //   </>
   // ));
-  const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-    <Route path='/root' element={<Navbar/>}>
-      <Route index element={<Home />}/>
-      <Route path="about" element={<About />} />
-      <Route path="products" element={<Product />} />
-    </Route>
-    </>
-  ));
+  // NESTED Routes
+  // const router = createBrowserRouter(
+  // createRoutesFromElements(
+  //   <>
+  //   <Route path='/root' element={<Navbar/>}>
+  //     <Route index element={<Home />}/>
+  //     <Route path="about" element={<About />} />
+  //     <Route path="products" element={<Product />} />
+  //   </Route>
+  //   </>
+  // ));
 
   // Step 1: create router (using this going ahead)
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/root",
-  //     element: <Navbar/>,
-  //     children: [
-  //       {
-  //         // path: "",
-  //         index: true,
-  //         element: <Home/>
-  //       },
-  //       {
-  //         path: "about",
-  //         element: <About/>
-  //       },
-  //       {
-  //         path: "products",
-  //         element: <Product/>
-  //       }
-  //     ]
-  //   },
-  // ])
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navbar/>,
+      children: [
+        {
+          // path: "",
+          index: true,
+          element: <Home/>
+        },
+        {
+          path: "about",
+          element: <About/>
+        },
+        {
+          path: "products",
+          element: <Product/>
+        }
+      ]
+    },
+  ])
 
   return (
     <>

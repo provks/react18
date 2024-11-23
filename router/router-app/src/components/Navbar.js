@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -7,18 +7,24 @@ function Navbar() {
       <div className="navbar">
         <h3>
           {/* <a href="/">Home</a> */}
-          <Link to="/root">Home</Link>
+          <NavLink style={({isActive}) => (isActive ? {color: "red", border: "1px solid black"} : undefined )} to="/">Home</NavLink>
           {/* Home */}
         </h3>
         <h3>
           {/* <a href="/about">About</a> */}
-          <Link to="about">About</Link>
+          <NavLink 
+            style={({isActive}) => (isActive ? {color: "red", border: "1px solid black"} : undefined )}
+            to="about"
+          >About</NavLink>
           {/* About */}
         </h3>
         <h3>
-        {/* <a href="/products">Products</a> */}
-        <Link to="products">Products</Link>
-        {/* Products */}
+          {/* <a href="/products">Products</a> */}
+          <NavLink 
+            style={({isActive}) => (isActive ? {color: "red", border: "1px solid black"} : undefined )}
+            to="products"
+          >Products</NavLink>
+          {/* Products */}
         </h3>
       </div>
       <Outlet />
