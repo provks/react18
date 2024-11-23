@@ -7,17 +7,17 @@ function Navbar() {
       <div className="navbar">
         <h3>
           {/* <a href="/">Home</a> */}
-          <Link to="/">Home</Link>
+          <Link to="/root">Home</Link>
           {/* Home */}
         </h3>
         <h3>
           {/* <a href="/about">About</a> */}
-          <Link to="/about">About</Link>
+          <Link to="about">About</Link>
           {/* About */}
         </h3>
         <h3>
         {/* <a href="/products">Products</a> */}
-        <Link to="/products">Products</Link>
+        <Link to="products">Products</Link>
         {/* Products */}
         </h3>
       </div>

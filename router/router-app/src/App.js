@@ -19,7 +19,7 @@ function App() {
   // Step 1: create router (using this going ahead)
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/root",
       element: <Navbar/>,
       children: [
         {
@@ -28,11 +28,11 @@ function App() {
           element: <Home/>
         },
         {
-          path: "/about",
+          path: "about",
           element: <About/>
         },
         {
-          path: "/products",
+          path: "products",
           element: <Product/>
         }
       ]
