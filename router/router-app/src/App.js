@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Product from './pages/Product';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   // Another way of implmenting routes
@@ -45,7 +46,11 @@ function App() {
         {
           path: "products",
           element: <Product/>
-        }
+        },
+        {
+          path: "products/:id",
+          element: <ProductDetails/>
+        },
       ]
     },
   ])
