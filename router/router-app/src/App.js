@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Product from './pages/Product';
 import ProductDetails from './pages/ProductDetails';
+import ErrorPage from './pages/Error';
 
 function App() {
   // Another way of implmenting routes
@@ -33,6 +34,7 @@ function App() {
     {
       path: "/",
       element: <Navbar/>,
+      errorElement: <ErrorPage />,
       children: [
         {
           // path: "",

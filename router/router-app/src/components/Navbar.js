@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link, Outlet, NavLink } from 'react-router-dom';
+const user = {
+  id: 21,
+  name: "varun",
+  email: 'varun.gmail.com',
+}
 
 function Navbar() {
   return (
@@ -27,7 +32,7 @@ function Navbar() {
           {/* Products */}
         </h3>
       </div>
-      <Outlet />
+      <Outlet context={user} />
     </>
   );
 }
