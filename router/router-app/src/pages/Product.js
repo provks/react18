@@ -10,7 +10,7 @@ function Product() {
       {/* Fetch the products list from BE API */}
       <ul>
         {productList.map(product => (
-          <li>
+          <li key={product.id}>
             <Link to={`/products/${product.id}`}>{product.title}</Link>
           </li>
         ))}

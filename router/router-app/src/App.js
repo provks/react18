@@ -45,11 +45,17 @@ function App() {
         },
         {
           path: "products",
-          element: <Product/>
-        },
-        {
-          path: "products/:id",
-          element: <ProductDetails/>
+          // element: <Product/>
+          children: [
+            {
+              path: "",
+              element: <Product/>
+            },
+            {
+              path: ":id",
+              element: <ProductDetails/>
+            }
+        ]
         },
       ]
     },
