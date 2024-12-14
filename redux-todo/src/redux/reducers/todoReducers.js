@@ -20,15 +20,13 @@ export function todoReducer(state=initialState, action) {
             ]
         }
         case IS_TASK_COMPLETED:
-            return {
-                ...state,
-                todos: state.todos.map((task) => {
-                    if (task.id === action.id) {
-                        task.isCompleted = !task.isCompleted
-                    }
-                    return task;
-                })
-            } 
+            const updatedTodos = state.todos.map((task) => {
+                if (task.id === action.id) {
+                    task.isCompleted = !task.isCompleted
+                }
+                return task;
+            })
+            return { ...state, todos: updatedTodos } 
         default: 
             return state;
     }
