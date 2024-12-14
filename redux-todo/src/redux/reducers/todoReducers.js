@@ -1,7 +1,18 @@
 import {ADD_TASK, IS_TASK_COMPLETED} from "../actions/todoActions" 
 
 const initialState = {
-    todos: []
+    todos: [
+        {
+            id: Date.now(),
+            title: "Meeting at 9AM",
+            isCompleted: false,
+        }, 
+        {
+            id: Date.now()+1,
+            title: "Demo at 10AM",
+            isCompleted: false,
+        }
+    ]
 }
 
 // reducer function

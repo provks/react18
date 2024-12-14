@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import ToDoForm from './components/todo-form/ToDoForm';
 import ToDoList from './components/todo-list/ToDoList';
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 
 function App() {
   // state
@@ -32,13 +34,16 @@ function App() {
     setTodos(updatedTasks);
   }
   console.log("todos", todos);
+  // console.log("store", store.getState());
   return (
     <div>
       <h1>Todo App</h1>
       {/* todoForm component */}
-      <ToDoForm createTask={createTask}/>
-      {/* todoList */}
-      <ToDoList todos={todos} toggleTask={toggleTaskStatus}/>
+      <Provider store={store}>
+        <ToDoForm createTask={createTask}/>
+        {/* todoList */}
+        <ToDoList todos={todos} toggleTask={toggleTaskStatus}/>
+      </Provider>
     </div>
   );
 }
