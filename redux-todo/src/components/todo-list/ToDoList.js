@@ -1,9 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { toggleTask}  from '../../redux/actions/todoActions';
 
 function ToDoList() {
+  const dispatch = useDispatch();
+
   const todos = useSelector((state) => state.todos);
   // const users = useSelector((state) => state.users);
+
+  const toggleTask = (id) => ({type: "is_task_completed", id});
   return (
     <div>
         <ul>
@@ -13,6 +18,7 @@ function ToDoList() {
                     <span>{(task.isCompleted) ? 'Completed' : 'Pending'}</span>
                     <button 
                       // onClick={() => toggleTask(task.id)}
+                      onClick={() => dispatch(toggleTask(task.id))}
                     >
                       toggle</button>
                 </li>

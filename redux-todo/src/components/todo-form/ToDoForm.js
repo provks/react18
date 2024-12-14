@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../redux/actions/todoActions';
 
 function ToDoForm({createTask}) {
+  const dispatch = useDispatch();
   const [taskContent, setTaskContent] = useState("");
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    createTask(taskContent);
+    // dispatch action
+    dispatch(addTask(taskContent));
+    // createTask(taskContent);
     setTaskContent("");
   }
 

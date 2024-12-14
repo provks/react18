@@ -24,7 +24,7 @@ export function todoReducer(state=initialState, action) {
             todos: [
                 ...state.todos,
                 {
-                    id: new Date.now(),
+                    id: Date.now(),
                     title: action.title,
                     isCompleted: false,
                 }
