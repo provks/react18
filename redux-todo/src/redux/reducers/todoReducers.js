@@ -66,4 +66,6 @@ const todoSlice = createSlice({
             })
         }
     }
-})
+});
+
+export const todoReducer = todoSlice.reducer
