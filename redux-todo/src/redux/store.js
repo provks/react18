@@ -1,7 +1,15 @@
 // import * as redux from 'redux';
-// import { todoReducer } from './reducers/todoReducers';
+// import { todosReducer } from './reducers/todoReducers';
+// import { filtersReducer } from './reducers/filterReducers';
 
 // export const store = redux.createStore(todoReducer);
+// combined reducer
+// const store = redux.combineReducers({
+//   // Define a top-level state field named `todos`, handled by `todosReducer`
+//   todos: todosReducer,
+//   filters: filtersReducer,
+// //   another: anotherReudcer,
+// });
 
 
 import { configureStore } from '@reduxjs/toolkit'
