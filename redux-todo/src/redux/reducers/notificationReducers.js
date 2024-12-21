@@ -9,7 +9,11 @@ const initialState = {
 const notificationSlice = createSlice({
     name:'notification',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        reset: (state, action) => {
+            state.message = "";
+        }
+    },
     // This used to work previously (deprecated, not working now)
     // extraReducers: {
     //     "todo/add_task": (state, action) => {
@@ -23,12 +27,17 @@ const notificationSlice = createSlice({
                 state.message = "Todo created successfully!";
             })
       },
+    // using map object (deprecated, not working now)
+    // extraReducers: {
+    //     [todoActions.add_task]: (state, action) => {
+    //         state.message = "Todo created successfully!";
+    //     },
+    // }
     
 });
 
 export const notificationReducer = notificationSlice.reducer;
 
-export const notificationSelector = (state) => {
-    console.log("notificationReducer state", state)
- return    state.notificationReducer.message
-};
+export const notificationSelector = (state) => state.notificationReducer.message;
+
+export const notificationAction = notificationSlice.actions;
