@@ -1,12 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { toggleTask}  from '../../redux/actions/todoActions';
-import {todoActions} from '../../redux/reducers/todoReducers';
+import {todoActions, todoSelector} from '../../redux/reducers/todoReducers';
 
 function ToDoList() {
   const dispatch = useDispatch();
 
-  const todos = useSelector((state) => state.todos);
+  // const todos = useSelector((state) => state.todos);
+  const todos = useSelector(todoSelector);
+  console.log(todos)
   // const users = useSelector((state) => state.users);
   // const toggleTask = (id) => ({type: "is_task_completed", id});
   return (

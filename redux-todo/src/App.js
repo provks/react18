@@ -33,7 +33,7 @@ function App() {
     });
     setTodos(updatedTasks);
   }
-  console.log("todos", todos);
+  // console.log("todos", todos);
   // console.log("store", store.getState());
   return (
     <div>
