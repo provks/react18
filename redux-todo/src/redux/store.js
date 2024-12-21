@@ -14,7 +14,8 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import { todoReducer } from './reducers/todoReducers';
+import { notificationReducer } from './reducers/notificationReducers';
 
 export const store = configureStore({
-    reducer: {todoReducer},
+    reducer: {todoReducer, notificationReducer},
 })
