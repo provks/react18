@@ -20,9 +20,11 @@ function ToDoForm({createTask}) {
 
   return (
     <div>
-      <div class="alert alert-success" role="alert">
-        A simple success alert—check it out!
-      </div>
+      { message && 
+        <div className="alert alert-success" role="alert">
+          {message}
+        </div>
+      }
       <form onSubmit={handleFormSubmit}>
         <input id='content' name='content' type="text" value={taskContent} onChange={(e) => setTaskContent(e.target.value)} />
         <button type='submit'>Create todo</button>
