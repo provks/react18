@@ -68,4 +68,7 @@ const todoSlice = createSlice({
     }
 });
 
-export const todoReducer = todoSlice.reducer
+export const todoReducer = todoSlice.reducer;
+
+// export const {add_task, toggle_todo_status} = todoSlice.actions; 
+export const todoActions = todoSlice.actions; 

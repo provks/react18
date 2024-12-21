@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../redux/actions/todoActions';
+// import { addTask } from '../../redux/actions/todoActions';
+import {todoActions} from '../../redux/reducers/todoReducers';
 
 function ToDoForm({createTask}) {
   const dispatch = useDispatch();
@@ -8,7 +9,8 @@ function ToDoForm({createTask}) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // dispatch action
-    dispatch(addTask(taskContent));
+    // dispatch(addTask(taskContent));
+    dispatch(todoActions.add_task(taskContent));
     // createTask(taskContent);
     setTaskContent("");
   }

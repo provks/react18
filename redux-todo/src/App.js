@@ -15,7 +15,7 @@ function App() {
       title: taskContent,
       isCompleted: false,
     };
-    console.log('newTask', newTask)
+    // console.log('newTask', newTask)
     setTodos([...todos, newTask]);
     
   }
