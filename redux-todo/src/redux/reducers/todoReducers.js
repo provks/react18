@@ -5,12 +5,12 @@ const initialState = {
         {
             id: Date.now(),
             title: "Meeting at 9AM",
-            isCompleted: false,
+            completed: false,
         }, 
         {
             id: Date.now()+1,
             title: "Demo at 10AM",
-            isCompleted: false,
+            completed: false,
         }
     ]
 }
@@ -61,7 +61,7 @@ const todoSlice = createSlice({
         toggle_todo_status: (state, action) => {
             state.todos.map((task) => {
                 if (task.id === action.payload) {
-                    task.isCompleted = !task.isCompleted
+                    task.completed = !task.completed
                 }
                 return task;
             })
