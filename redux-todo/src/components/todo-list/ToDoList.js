@@ -22,7 +22,7 @@ function ToDoList() {
                       // onClick={() => toggleTask(task.id)}
                       // onClick={() => dispatch(toggleTask(task.id))}
                       onClick={() => {
-                        console.log(`[Log]: dispatching action: toggle_todo_status, data:${task.id}`);
+                        // console.log(`[Log]: dispatching action: toggle_todo_status, data:${task.id}`);
                         dispatch(todoActions.toggle_todo_status(task.id))
                       }}
                     >

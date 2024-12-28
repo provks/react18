@@ -12,10 +12,12 @@
 // });
 
 
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, Tuple } from '@reduxjs/toolkit'
 import { todoReducer } from './reducers/todoReducers';
 import { notificationReducer } from './reducers/notificationReducers';
+import { loggerMiddleware } from './middleware/loggerMiddleware';
 
 export const store = configureStore({
     reducer: {todoReducer, notificationReducer},
+    middleware: () => new Tuple(loggerMiddleware),
 })

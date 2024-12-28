@@ -19,7 +19,7 @@ function ToDoForm({createTask}) {
     e.preventDefault();
     // dispatch action
     // dispatch(addTask(taskContent));
-    console.log(`[Log]: dispatching action: add_task, data:${taskContent}`);
+    // console.log(`[Log]: dispatching action: add_task, data:${taskContent}`);
     dispatch(todoActions.add_task(taskContent));
     // createTask(taskContent);
     setTaskContent("");
