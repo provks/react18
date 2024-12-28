@@ -19,5 +19,5 @@ import { loggerMiddleware } from './middleware/loggerMiddleware';
 
 export const store = configureStore({
     reducer: {todoReducer, notificationReducer},
-    middleware: () => new Tuple(loggerMiddleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
 })

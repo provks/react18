@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { toggleTask}  from '../../redux/actions/todoActions';
-import {todoActions, todoSelector} from '../../redux/reducers/todoReducers';
+import {todoActions, todoSelector, getInitialState} from '../../redux/reducers/todoReducers';
 import axios from 'axios'; 
 
 function ToDoList() {
@@ -14,13 +14,15 @@ function ToDoList() {
     //   .then(json => console.log(json))
 
     // axios
-    axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then(response => {
-      console.log(response.data);
-      // dispatch action to update the initial state
-      dispatch(todoActions.setInitialState(response.data))
-    })
+    // axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    // .then(response => {
+    //   console.log(response.data);
+    //   // dispatch action to update the initial state
+    //   dispatch(todoActions.setInitialState(response.data))
+    // })
 
+    // dipatch action of createAsyncThunk
+    dispatch(getInitialState())
 
   }, [])
 

@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios'; 
 
 const initialState = {
     todos: [
@@ -43,6 +44,19 @@ const initialState = {
 //     }
 
 // }
+
+// create createAsyncThunk function
+export const getInitialState = createAsyncThunk('todo/setInitialState', 
+    (arg, thunkAPI) => {
+       // api call
+       axios.get('https://jsonplaceholder.typicode.com/todos/1')
+           .then(response => {
+             console.log(response.data);
+             // dispatch action to update the initial state
+             thunkAPI.dispatch(todoActions.setInitialState(response.data))
+           }) 
+    }
+)
 
 // Using redux toolkit
 const todoSlice = createSlice({
