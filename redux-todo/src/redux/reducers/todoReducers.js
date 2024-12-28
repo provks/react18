@@ -47,14 +47,17 @@ const initialState = {
 
 // create createAsyncThunk function
 export const getInitialState = createAsyncThunk('todo/setInitialState', 
-    (arg, thunkAPI) => {
-       // api call
-       axios.get('https://jsonplaceholder.typicode.com/todos/1')
-           .then(response => {
-             console.log(response.data);
-             // dispatch action to update the initial state
-             thunkAPI.dispatch(todoActions.setInitialState(response.data))
-           }) 
+    // (arg, thunkAPI) => {
+    //    // api call
+    //    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    //        .then(response => {
+        //          console.log(response.data);
+        //          // dispatch action to update the initial state
+        //          thunkAPI.dispatch(todoActions.setInitialState(response.data))
+        //        }) 
+        // }
+    () => {
+        return axios.get('https://jsonplaceholder.typicode.com/todos/1');
     }
 )
 
@@ -83,7 +86,14 @@ const todoSlice = createSlice({
                 return task;
             })
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getInitialState.fulfilled, (state, action) => {
+                console.log('getInitialState is fulfilled!')
+                state.todos=[action.payload.data];
+            })
+      },
 });
 
 export const todoReducer = todoSlice.reducer;
