@@ -17,7 +17,10 @@ function ToDoList() {
     axios.get('https://jsonplaceholder.typicode.com/todos/1')
     .then(response => {
       console.log(response.data);
+      // dispatch action to update the initial state
+      dispatch(todoActions.setInitialState(response.data))
     })
+
 
   }, [])
 

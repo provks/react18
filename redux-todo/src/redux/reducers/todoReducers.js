@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     todos: [
-        {
-            id: Date.now(),
-            title: "Meeting at 9AM",
-            completed: false,
-        }, 
-        {
-            id: Date.now()+1,
-            title: "Demo at 10AM",
-            completed: false,
-        }
+        // {
+        //     id: Date.now(),
+        //     title: "Meeting at 9AM",
+        //     completed: false,
+        // }, 
+        // {
+        //     id: Date.now()+1,
+        //     title: "Demo at 10AM",
+        //     completed: false,
+        // }
     ]
 }
 
@@ -49,6 +49,9 @@ const todoSlice = createSlice({
     name:'todo',
     initialState: initialState,
     reducers: {
+        setInitialState:(state, action)=>{
+            state.todos=[action.payload];
+        },
         // this is my action
         add_task: (state, action) => {
             state.todos.push({
