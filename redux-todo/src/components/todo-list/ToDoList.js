@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { toggleTask}  from '../../redux/actions/todoActions';
 import {todoActions, todoSelector, getInitialState} from '../../redux/reducers/todoReducers';
-import axios from 'axios'; 
+// import axios from 'axios'; 
 
 function ToDoList() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function ToDoList() {
     // dipatch action of createAsyncThunk
     dispatch(getInitialState())
 
-  }, [])
+  }, [dispatch])
 
   // const todos = useSelector((state) => state.todos);
   const todos = useSelector(todoSelector);

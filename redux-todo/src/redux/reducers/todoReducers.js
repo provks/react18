@@ -45,7 +45,7 @@ const initialState = {
 
 // }
 
-// create createAsyncThunk function
+// create createAsyncThunk function for get (setting initialState)
 export const getInitialState = createAsyncThunk('todo/setInitialState', 
     // (arg, thunkAPI) => {
     //    // api call
@@ -57,7 +57,22 @@ export const getInitialState = createAsyncThunk('todo/setInitialState',
         //        }) 
         // }
     () => {
-        return axios.get('https://jsonplaceholder.typicode.com/todos/1');
+        return axios.get('https://jsonplaceholder.typicode.com/todos/2');
+    }
+)
+
+// create creatAsyncThunk function for post (create todo)
+export const addTodoAsync = createAsyncThunk('todo/add_task', 
+    async (payload) => {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                title: payload,
+                completed: false
+             }),
+          });
+          return response.json();
     }
 )
 
@@ -93,6 +108,12 @@ const todoSlice = createSlice({
                 console.log('getInitialState is fulfilled!')
                 state.todos=[action.payload.data];
             })
+            .addCase(addTodoAsync.fulfilled, (state, action) => {
+                console.log('addTodoAsync is fulfilled!', action.payload);
+                // update redux store
+                state.todos.push(action.payload);
+
+              })
       },
 });
 

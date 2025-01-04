@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addTask } from '../../redux/actions/todoActions';
-import {todoActions} from '../../redux/reducers/todoReducers';
+import {addTodoAsync} from '../../redux/reducers/todoReducers';
 import {notificationSelector, notificationAction} from "../../redux/reducers/notificationReducers";
 
 function ToDoForm({createTask}) {
@@ -20,7 +20,8 @@ function ToDoForm({createTask}) {
     // dispatch action
     // dispatch(addTask(taskContent));
     // console.log(`[Log]: dispatching action: add_task, data:${taskContent}`);
-    dispatch(todoActions.add_task(taskContent));
+    // dispatch(todoActions.add_task(taskContent));
+    dispatch(addTodoAsync(taskContent))
     // createTask(taskContent);
     setTaskContent("");
   }

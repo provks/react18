@@ -12,7 +12,7 @@
 // });
 
 
-import { configureStore, Tuple } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { todoReducer } from './reducers/todoReducers';
 import { notificationReducer } from './reducers/notificationReducers';
 import { loggerMiddleware } from './middleware/loggerMiddleware';
